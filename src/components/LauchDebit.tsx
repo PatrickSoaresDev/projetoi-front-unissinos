@@ -9,6 +9,7 @@ import { Debit } from '../types/Debit';
 import ItemCategory from './ItemCategory';
 import { Categories } from '../types/Categories';
 import { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const schema = object({
     description: string().required("Campo obrigatório"),
@@ -40,14 +41,17 @@ export default function Lauch({ ...props }) {
 
 
     const handleSubmit = async (data: any) => {
+        console.log(id_category)
+        if (id_category == 0) return toast.warn('Categoria não informada')
         data.month = page.id_month;
         data.year = page.year
         data.id_category = id_category
-        data.id_category = data.id_category
+
         data.day = day
         await debitService.createDebit(data)
         await update()
         reset()
+        setIdCategory(1)
 
     }
 
@@ -108,7 +112,8 @@ export default function Lauch({ ...props }) {
                     </div>
                     <div className='flex flex-col w-full'>
                         <label className={`text-primary ${errors.name ? "text-red-500" : ''} + text-sm`}>Categoria</label>
-                        <select defaultValue={1} className="border rounded-lg  outline-primary focus:outline-green-400  px-1" onChange={(e) => setIdCategory(parseInt(e.target.value))}>
+                        <select defaultValue={0} className="border rounded-lg  outline-primary focus:outline-green-400  px-1" onChange={(e) => setIdCategory(parseInt(e.target.value))}>
+
                             {
                                 categories.map((val: Categories) => {
                                     return <option value={val.id} key={val.id}>{val.category}</option>
@@ -126,6 +131,6 @@ export default function Lauch({ ...props }) {
             <div className='px-8'>
                 <ItemCategory list={listDebit} label='Debitos mês Atual' update={update} />
             </div>
-        </div>
+        </div >
     );
 } 

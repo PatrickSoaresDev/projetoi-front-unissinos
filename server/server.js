@@ -36,8 +36,9 @@ app.delete('/credit/:id', creditService.deleteCredit)
 
 //balance
 app.get('/balance', async (req, res) => {
-    const total_debit = await debitService.getSum()
-    const total_credit = await creditService.getSum()
+    const total_debit = await debitService.getSum() | 0
+    const total_credit = await creditService.getSum() | 0
+
     const balance = (parseFloat(total_credit) - parseFloat(total_debit)).toFixed(2)
 
     res.send(balance)
