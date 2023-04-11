@@ -1,10 +1,9 @@
 (async () => {
     const database = require('./db')
-    const User = require('./model/user')
 
-    try{
+    try {
         await database.sync()
-    }catch(e){
+    } catch (e) {
         console.log(e)
     }
 })()
