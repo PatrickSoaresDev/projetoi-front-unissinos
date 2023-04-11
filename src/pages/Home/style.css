@@ -1,0 +1,61 @@
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(145, 188, 132, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(145, 188, 132, 0.989233193277311) 58%, rgba(0, 212, 255, 1) 100%);
+}
+
+
+.custom-table {
+    @apply relative
+}
+
+.custom-table table {
+    @apply w-full text-xs text-left text-gray-100
+}
+
+.custom-table thead {
+    @apply w-full text-xs text-left text-gray-100
+}
+
+.custom-table th {
+    @apply px-6 py-1
+}
+
+.custom-table .acao {
+    text-align: end;
+    width: 1rem
+}
+
+.custom-table tbody tr {
+    @apply bg-green-200
+}
+
+.custom-table tbody tr:hover {
+    @apply bg-green-400
+}
+
+.custom-table td {
+    @apply px-6 py-1 font-semibold text-gray-700
+}
+
+.custom-table .acaoTd {
+    @apply space-x-1;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.3rem;
+
+}

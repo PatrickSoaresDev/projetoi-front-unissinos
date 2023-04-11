@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { AuthContext } from "./AuthContext"
-import { User } from "../types/User"
-import UserServices from "../services/user.services"
-import { tokenData } from "../types/TokenData"
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom"
 import { AxiosError, isAxiosError } from "axios"
 import { toast } from "react-toastify"
+import UserServices from "../../services/user.services";
+import { User } from "../../types/User";
+import { tokenData } from "../../types/TokenData";
 
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {

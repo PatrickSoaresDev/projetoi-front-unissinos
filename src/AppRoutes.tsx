@@ -3,24 +3,27 @@ import {
     BrowserRouter as Router,
     Route,
     Routes,
-    Navigate
 } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 
-import { AuthProvider } from './contexts/AuthProvider'
-import { RequireAuth } from './contexts/RequireAuth'
+
 import CreateAccount from './pages/Login/Register'
+import { RequireAuth } from './contexts/Auth/RequireAuth'
+import { AuthProvider } from './contexts/Auth/AuthProvider'
+import { PageProvider } from './contexts/Page/PageProvider'
 
 const AppRoutes = () => {
     return (
         <Router>
             <AuthProvider>
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<CreateAccount />} />
-                    <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
-                </Routes>
+                <PageProvider>
+                    <Routes>
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<CreateAccount />} />
+                        <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
+                    </Routes>
+                </PageProvider>
             </AuthProvider>
         </Router>
     )

@@ -1,12 +1,12 @@
 
 import { useContext } from 'react'
-import { AuthContext } from '../../contexts/AuthContext'
+import { AuthContext } from '../../contexts/Auth/AuthContext'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import loginImg from '../../assets/financa.jpg'
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const schema = object({
     email: string().required("Campo obrigatório").email("Você precisa usar um e-mail válido"),
@@ -15,7 +15,10 @@ const schema = object({
 
 
 export default function Login() {
+
     const { register, handleSubmit: onSubmit, watch, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
+
+
     const auth = useContext(AuthContext)
 
 
